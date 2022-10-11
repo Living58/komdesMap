@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</head>
+<body>
+    <div id="map1"></div>
+    <script>
+        //Configure map with lat, long and zoom-level
+        var map = L.map("map1").setView([59.030048, 11.428073], 10);
+
+        //Setup map constructor with tiles
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a>'
+        }).addTo(map);
+
+        //Set up markers and attach to map
+        //Ny bru
+        var nyBru = L.marker([59.094200, 11.252090]).addTo(map);
+        //Set up tooltip
+        nyBru.bindTooltip("Svinesundsbrua E6").openTooltip();
+
+
+        //Gammel bru
+        var gammelBru = L.marker([59.097735, 11.270615]).addTo(map);
+        gammelBru.bindTooltip("Svinesundbrua 118").openTooltip();
+    
+        //Berby
+        var berby = L.marker([58.944389, 11.461592]).addTo(map);
+        berby.bindTooltip("Berby").openTooltip();
+
+        //Holtet
+        var holtet = L.marker([58.878705, 11.534377]).addTo(map);
+        holtet.bindTooltip("Holtet").openTooltip();
+
+        //Kornsjø
+        var kornsjo = L.marker([58.934810, 11.670954]).addTo(map);
+        kornsjo.bindTooltip("Kornsjø").openTooltip();
+
+        var myIcon = L.icon({
+            iconUrl: 'red.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        var tollsted = L.marker([59.108555, 11.262509], {icon: myIcon}).addTo(map);
+        tollsted.bindTooltip("Svinesund tollsted").openTooltip();
+        
+    </script>
+</body>
+</html>
